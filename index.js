@@ -45,10 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-const btn = document.getElementById('btnSent');
 
-document.getElementById('formSent')
- .addEventListener('submit', function(event) {
+
+document.getElementById('formSent') .addEventListener('submit', function(event) {
+  const btn = document.getElementById('btnSent');
    event.preventDefault();
 
    btn.value = 'Sending...';
@@ -105,23 +105,33 @@ function menuButton() {
   const button = document.getElementById('menuButton');
   const navbar = document.getElementById('navbar');
 
-  button.addEventListener('click', function () {
-    if (this.classList.contains('clickeado')) {
-      navbar.style.display = 'none';
-      button.classList.remove('clickeado');
+  function handleResize() {
+    if (window.innerWidth <= 768) {
+      button.addEventListener('click', function () {
+        if (this.classList.contains('clickeado')) {
+          navbar.style.display = 'none';
+          button.classList.remove('clickeado');
+        } else {
+          this.classList.add('clickeado');
+          navbar.style.display = 'block';
+        }
+      });
+
+      const links = document.querySelectorAll('#navbar ul li a');
+      links.forEach(link => {
+        link.addEventListener('click', function () {
+          navbar.style.display = 'none';
+          button.classList.remove('clickeado');
+        });
+      });
     } else {
-      this.classList.add('clickeado');
+      // Cualquier acción adicional que desees realizar cuando window.innerWidth es mayor que 768
       navbar.style.display = 'block';
     }
-  });
+  }
 
-  const links = document.querySelectorAll('#navbar ul li a');
-    links.forEach(link => {
-    link.addEventListener('click', function () {
-      navbar.style.display = 'none';
-      button.classList.remove('clickeado');
-    });
-  });
+  handleResize();
+  window.addEventListener('resize', handleResize);
 }
 
 

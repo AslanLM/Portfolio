@@ -841,8 +841,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 .reveal-img {
   position: absolute;
-  width: 300px;
-  height: 400px;
+  width: 450px;
+  height: 300px;
   top: 50%;
   left: 50%;
   pointer-events: none;

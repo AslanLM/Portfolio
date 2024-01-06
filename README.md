@@ -2,4 +2,4 @@
 
 ## WebSite
 
-- [medinaluis.me](https://medinaluis.me){:target="_blank"}
+- [medinaluis.me](https://medinaluis.me)

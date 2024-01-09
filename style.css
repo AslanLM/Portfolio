@@ -34,6 +34,10 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #c8aa8c;
 }
 
+a{
+  all: unset;
+}
+
 
 /* inicio y preloader */
 
@@ -91,15 +95,6 @@ body::-webkit-scrollbar-thumb:hover {
   z-index: 999;
 }
 
-#elem2 {
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  height: 0;
-  bottom: 0;
-  background-color: #89a5b3;
-  z-index: 999;
-}
 
 /* seccion home */
 /* header */
@@ -646,6 +641,43 @@ body::-webkit-scrollbar-thumb:hover {
   .title-skills span {
 	color: #c8aa8c;
   }
+
+.marquee{
+  position: relative;
+  background-color: #212022;
+  color: #fff;
+  padding: 30px 0;
+  font-weight: 600;
+  font-size: 3rem;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.marquee-inner {
+  display: flex;
+}
+
+.marquee-part{
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 4px;
+}
+
+.icon-skill{
+  display: flex;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  margin-right: 1rem;
+}
+
+.icon-skill img{
+  width: 100%;
+  height: 100%;
+}
+
+
 
 
 .container-skills {

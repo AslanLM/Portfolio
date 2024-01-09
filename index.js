@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const worksSection = document.getElementById("works");
 
   const options = {
-    root: null, // Use the viewport as the root
-    threshold: 0.3, // Trigger when 50% of the target is visible
+    root: null,
+    threshold: 0.3, 
   };
 
   const observer = new IntersectionObserver(handleIntersection, options);
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-  // Observe the #works element
+
   observer.observe(worksSection);
   
   function handleScroll() {
@@ -77,24 +77,23 @@ function downloadResume() {
 
   link.download = 'MedinaCV.pdf';
 
-  // Añade el enlace al DOM y simula un clic para iniciar la descarga
   document.body.appendChild(link);
   link.click();
 
   document.body.removeChild(link);
 }
 
-function obtenerHoraCostaRica() {
-  const ahora = new Date();
-  const horaCostaRica = ahora.toLocaleTimeString('es-CR', { timeZone: 'America/Costa_Rica', hour: '2-digit', minute: '2-digit' });
-  return horaCostaRica;
+function getTimeCostaRica() {
+  const nowCR = new Date();
+  const timeCostaRica = nowCR.toLocaleTimeString('es-CR', { timeZone: 'America/Costa_Rica', hour: '2-digit', minute: '2-digit' });
+  return timeCostaRica;
 }
 
-function mostrarHora() {
-  const contenedorHora = document.getElementById('hora-container');
-  contenedorHora.textContent = `Costa Rica \n ${obtenerHoraCostaRica()}`;
+function showTimeCR() {
+  const timeContainer = document.getElementById('time-container');
+  timeContainer.textContent = `Costa Rica \n ${getTimeCostaRica()}`;
 
-  setTimeout(mostrarHora, 60000); // Actualizar cada minuto (60,000 milisegundos)
+  setTimeout(showTimeCR, 60000);
 }
 
 function menuButton() {
@@ -192,25 +191,12 @@ function prealoaderAnimation() {
       duration: 2,
       delay: -0.4,
       ease: Expo.easeOut,
-    })
-
-    .to("#elem2", {
-      height: "100%",
-      top: 0,
-      duration: 1.5,
-      delay: -2.8,
-      ease: Expo.easeInOut,
-    })
-
-    .to("#elem2", {
-      height: 0,
-      duration: 1.2,
-      delay: -1.6,
-      ease: Expo.easeOut,
       onComplete: function () {
         homePageAnimation();
       },
-    });
+    })
+
+
 }
 
 function homePageAnimation() {
@@ -249,7 +235,9 @@ function revealImg() {
 
 
 
-mostrarHora();
+
+
+showTimeCR();
 menuButton();
 revealToSpan();
 prealoaderAnimation();

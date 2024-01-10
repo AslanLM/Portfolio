@@ -59,6 +59,9 @@ document.getElementById('formSent') .addEventListener('submit', function(event) 
     .then(() => {
       btn.value = 'Send Message';
       alert('Sent!');
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('message').value = '';
     }, (err) => {
       btn.value = 'Send Message';
       alert(JSON.stringify(err));

@@ -536,7 +536,7 @@ a{
 .detailed-information-row h3 {
   font-size: 1.25rem;
   line-height: 28px;
-  font-weight: 400;
+  font-weight: 300;
   width: 100%;
 }
 
@@ -620,48 +620,72 @@ a{
 	width: 100%;
 }
 
-.title-skills{
-	width: 100%;
-	height: 120px;
+.slider-container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 50vh;
+  padding-bottom: 20vh;
 }
 
-.title-skills h1 {
-	font-family: "MADE SAONARA 2", sans-serif;
-	font-weight: 500;
-	letter-spacing: 10px;
-	font-size: 3.5rem;
-	text-transform: capitalize;
-	color: #000;
-	display: inline-block;
-	position: relative;
-	z-index: 10;
-	padding: 50px 0 0 50px;
-  }
-
-  .title-skills span {
-	color: #c8aa8c;
-  }
-
-.marquee{
-  position: relative;
+.slider-skills{
+  position: absolute;
+  left: -2%;
   background-color: #212022;
   color: #fff;
   padding: 30px 0;
+  font-family: "MADE SAONARA 2", sans-serif;
+  letter-spacing: 8px;
   font-weight: 600;
-  font-size: 3rem;
+  font-size: 2.6rem;
   text-transform: uppercase;
   overflow: hidden;
 }
 
-.marquee-inner {
-  display: flex;
+.slider-skills::before,
+.slider-skills::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
 }
 
-.marquee-part{
+.slider-skills::before{
+  left: 0;
+  background: linear-gradient(to left, transparent, #212022);
+}
+
+.slider-skills::after{
+  right: 0;
+  background: linear-gradient(to right, transparent, #212022);
+}
+
+.slider-skills:hover .slider-inner{
+  animation-play-state: paused;
+}
+
+.slider-inner {
+  display: flex;
+  position: relative;
+  width: 1620px;
+  animation: 28s slide infinite linear;
+}
+
+
+
+.slider-part{
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  padding: 0 4px;
+  padding: 0 10px;
+}
+
+.slider-first{
+  padding-left: 60px;
 }
 
 .icon-skill{
@@ -675,6 +699,15 @@ a{
 .icon-skill img{
   width: 100%;
   height: 100%;
+}
+
+@keyframes slide {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
 }
 
 
@@ -702,13 +735,19 @@ a{
   position: relative;
   background-color: transparent;
   padding-left: 4vw;
-  height: 22vw; 
+  height: 20vw; 
   max-width: 100%;
   display: flex;
   align-items: center;
   user-select: none;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  transition: 0.5s ease-in;
+}
+
+.container-skills .item:hover{
+  background-color: #212022;
+  color: #fff;
 }
 
 .container-skills .opacity0{
@@ -733,6 +772,10 @@ a{
   color: #89a5b3;
 }
 
+.container-skills .item:hover:before{
+  color: #c8aa8c;
+}
+
 .container-skills .wrap-items{
     counter-reset: item;
     float: left;
@@ -749,12 +792,9 @@ a{
 
 @media screen and (max-width: 767px) {
 
-  .title-skills{
-    height: auto;
-  }
-  .title-skills h1{
-    font-size: 3rem;
-    padding-left: 20px;
+  .slider-inner{
+    width: auto;
+    animation: 40s slide infinite linear;
   }
 
 
@@ -873,8 +913,8 @@ a{
 
 .reveal-img {
   position: absolute;
-  width: 450px; 
-  height: 300px;
+  width: 500px; 
+  height: auto;
   top: 50%;
   left: 50%;
   pointer-events: none;

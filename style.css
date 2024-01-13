@@ -793,9 +793,20 @@ a{
 @media screen and (max-width: 767px) {
 
   .slider-inner{
-    width: auto;
+    width: 90.2%;
     animation: 40s slide infinite linear;
   }
+
+  .slider-skills::before,
+  .slider-skills::after {
+   display: none;
+  }
+
+  .slider-first{
+    padding-left: 80px;
+  }
+
+
 
 
   .container-skills .wrap-items {

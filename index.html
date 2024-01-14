@@ -24,9 +24,9 @@
     <meta property="twitter:description" content="Personal portfolio of Luis Medina, a frontend web developer from Costa Rica." />
     <meta property="twitter:image" content="https://medinaluis.me/metalm.jpeg"/>
 
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/made-saonara-2"/>
-    <link rel="stylesheet" href="style.css" /> 
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="inicio" class="inicio">
@@ -39,10 +39,10 @@
         <header id="header" class="header header-hidden">
           <div class="logo">
             <span><a href="#">M</a></span>
-            <h3>edina Luis</h3>
+            <h1>edina Luis</h1> 
           </div>
 
-          <button id="menuButton" class="menu-button">
+          <button id="menuButton" class="menu-button" aria-label="Toggle Menu">
             <div></div>
             <div></div>
           </button>
@@ -264,7 +264,7 @@
                   <h2>GoT Characters</h2>
 
                   <div class="reveal-img">
-                    <img class="hidden-img" src="img/p4.PNG" height="25" alt="project4"/>
+                    <img class="hidden-img" src="img/p4.JPG" height="25" alt="project4"/>
                   </div>
                 </div>
               </a> 
@@ -298,7 +298,7 @@
                     placeholder=""
                     required
                   />
-                  <label>Your Name</label>
+                  <label for="name">Your Name</label>
                   <div class="underline" placeholder=""></div>
                 </div>
                 <div class="input-data input-media">
@@ -309,14 +309,14 @@
                     placeholder=""
                     required
                   />
-                  <label>Your Email</label>
+                  <label for="email">Your Email</label>
                   <div class="underline"></div>
                 </div>
               </div>
               <div class="form-row">
                 <div class="input-data textarea">
                   <textarea id="message" name="message" cols="30  rows="10" placeholder="" required></textarea>
-                  <label>Your Message</label>
+                  <label for="message">Your Message</label>
                   <div class="underline" placeholder=""></div>
                 </div>
               </div>
@@ -367,13 +367,13 @@
       </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="index.js" defer></script> 
 
     <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
       emailjs.init('FRWzoyF2_-kVvnCVM')
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="index.js"></script>
   </body>
 </html>

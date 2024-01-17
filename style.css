@@ -1265,7 +1265,7 @@ input:-webkit-autofill:active {
 
 
 
-/* Media query para gente pobre que su celular es demasiado pequeno como los odio */
+/* Media query horizontal */
 
 @media only screen and (max-height: 450px) {
   #home {

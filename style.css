@@ -1291,4 +1291,8 @@ input:-webkit-autofill:active {
     height: auto;
     min-height: 180vh;
   }
+
+  .slider-container{
+    height: 70vh;
+  }
 }

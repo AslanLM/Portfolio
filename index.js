@@ -103,17 +103,19 @@ function menuButton() {
   const button = document.getElementById('menuButton');
   const navbar = document.getElementById('navbar');
 
+  function toggleNavbar() {
+    if (button.classList.contains('clickeado')) {
+      navbar.style.display = 'none';
+      button.classList.remove('clickeado');
+    } else {
+      button.classList.add('clickeado');
+      navbar.style.display = 'block';
+    }
+  }
+
   function handleResize() {
     if (window.innerWidth <= 768) {
-      button.addEventListener('click', function () {
-        if (this.classList.contains('clickeado')) {
-          navbar.style.display = 'none';
-          button.classList.remove('clickeado');
-        } else {
-          this.classList.add('clickeado');
-          navbar.style.display = 'block';
-        }
-      });
+      button.addEventListener('click', toggleNavbar);
 
       const links = document.querySelectorAll('#navbar ul li a');
       links.forEach(link => {

@@ -283,15 +283,6 @@ img{
   width: 100%;
 }
 
-.menu-button:hover div:first-child{
-  transform: translateY(5px);
-  width: 100%;
-}
-
-.menu-button:hover div:last-child{
-  transform: translateY(-5px);
-}
-
 .menu-button.clickeado{
   gap: 0;
 }
@@ -715,6 +706,7 @@ img{
     transform: translateX(-100%);
   }
 }
+
 
 
 

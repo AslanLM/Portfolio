@@ -677,7 +677,7 @@ img{
 .slider-inner {
   display: flex;
   position: relative;
-  width: 1620px;
+  width: 100%;
   animation: 28s slide infinite linear;
 }
 
@@ -715,6 +715,7 @@ img{
     transform: translateX(-100%);
   }
 }
+
 
 
 
@@ -798,10 +799,6 @@ img{
 
 @media screen and (max-width: 767px) {
 
-  .slider-inner{
-    width: 90.2%;
-    animation: 40s slide infinite linear;
-  }
 
   .slider-skills::before,
   .slider-skills::after {

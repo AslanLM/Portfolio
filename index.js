@@ -122,8 +122,6 @@ function menuButton() {
           button.classList.remove('clickeado');
         });
       });
-    } else {
-      navbar.style.display = 'block';
     }
   }
 

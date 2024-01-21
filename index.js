@@ -72,7 +72,7 @@ document.getElementById('formSent') .addEventListener('submit', function(event) 
 document.getElementById("downloadButton").addEventListener("click", downloadResume);
 function downloadResume() {
   
-  var resumePath = 'CV/MedinaLCV.pdf';
+  var resumePath = 'CV/MedinaCV.pdf';
 
   var link = document.createElement('a');
 

@@ -4,12 +4,22 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Satoshi";
+  src: url(/fonts/Satoshi-Medium.woff2);
+}
+
+@font-face {
+  font-family: "Made-Saonara-2";
+  src: url(/fonts/Made-Saonara-2.otf) format('opentype');
+}
+
 body,
 html {
   width: 100%;
 }
 
-html{
+html {
   scroll-behavior: smooth;
   scroll-padding: 10rem;
 }
@@ -17,6 +27,8 @@ html{
 body {
   transition: 0.5s ease;
   overflow-x: hidden;
+  background-color: #f8f8f8;
+  font-family: "Satoshi", sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -34,14 +46,16 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #c8aa8c;
 }
 
-a{
+a {
   all: unset;
 }
 
-img{
+img {
   object-fit: cover;
   object-position: center;
+  width: 100%;
 }
+
 
 
 /* inicio y preloader */
@@ -68,8 +82,8 @@ img{
   font-size: 4vw;
   font-weight: 500;
   color: #fff;
-  font-family: "MADE SAONARA 2", sans-serif;
-  letter-spacing: 4px;
+  font-family: "Made-Saonara-2", sans-serif;
+  letter-spacing: 5px;
 }
 
 @media screen and (max-width: 768px) {
@@ -100,14 +114,15 @@ img{
   z-index: 999;
 }
 
-
 /* seccion home */
 /* header */
 
 #home {
   width: 100%;
   height: 100vh;
-  min-height: 100vh;
+  animation: enhance-hero linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 360px;
 }
 
 .header {
@@ -120,10 +135,11 @@ img{
   align-items: center;
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 992;
   transform: translateY(0);
-  transition: transform 0.7s ease-out;
-  transition: height, 0.5s ease-out;
+  transition: transform 0.1s ease-out;
+  transition: height, 0.6s ease-out;
+  
 }
 
 .header-hidden {
@@ -131,13 +147,12 @@ img{
 }
 
 .active {
-  height: 60px;
+  height: 65px;
   background-color: #f8f8f8;
 }
 
-
 .active2 {
-  height: 60px;
+  height: 65px;
   background-color: rgb(17, 17, 17);
 }
 
@@ -150,7 +165,7 @@ img{
 .header .logo span a {
   display: block;
   font-size: 5rem;
-  font-family: "MADE SAONARA 2", sans-serif;
+  font-family: "Made-Saonara-2", sans-serif;
   font-weight: bolder;
   margin-top: -4px;
   text-decoration: none;
@@ -161,7 +176,7 @@ img{
   transform: scale(0.9);
 }
 
-.active2 .logo span a{
+.active2 .logo span a {
   color: #fff;
   transform: scale(0.9);
 }
@@ -175,15 +190,15 @@ img{
   display: flex;
   background-color: #f8f8f8;
   margin: 35px 0px 35px -15px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2rem !important;
   font-weight: 300;
   text-transform: uppercase;
-  font-size: 1.2rem;
 }
 
 .active .logo h1 {
   font-weight: 600;
-  transform: scale(0.9) translateX(-8px); 
-  
+  transform: scale(0.9) translateX(-8px);
 }
 
 .active2 .logo h1 {
@@ -207,23 +222,45 @@ img{
 }
 
 .header li {
+  position: relative;
   text-transform: uppercase;
-  font-weight: bold;
   font-size: 1.06rem;
+  font-weight: 400;
   margin-left: 19px;
   margin-right: 19px;
+  cursor: pointer;
 }
 
-.active li{
+.header li::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  border-radius: 10%;
+  background-color: #c8aa8c;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s;
+}
+
+.active li {
   transform: scale(0.9);
 }
 
-.active2 li{
+.active2 li {
   transform: scale(0.9);
 }
 
 .header li:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
+}
+
+.header li:hover::after{
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.4s;
 }
 
 .header li a {
@@ -233,7 +270,6 @@ img{
 
 .active2 li a {
   color: white;
-
 }
 
 .header a:hover {
@@ -243,7 +279,6 @@ img{
 .active a:hover {
   color: #c8aa8c;
 }
-
 
 .menu-button {
   position: absolute;
@@ -261,7 +296,7 @@ img{
   cursor: pointer;
 }
 
-.menu-button > div{
+.menu-button > div {
   display: flex;
   background: #000;
   height: 2px;
@@ -271,36 +306,33 @@ img{
   z-index: 1000;
 }
 
-.active2 .menu-button > div{
+.active2 .menu-button > div {
   background-color: #fff;
 }
 
-.menu-button > div:first-child{
+.menu-button > div:first-child {
   width: 80%;
 }
 
-.menu-button > div:last-child{
+.menu-button > div:last-child {
   width: 100%;
 }
 
-.menu-button.clickeado{
+.menu-button.clickeado {
   gap: 0;
 }
 
-.menu-button.clickeado div:first-child{
+.menu-button.clickeado div:first-child {
   background-color: #f8f8f8;
   transform: rotate(45deg);
   width: 100%;
- 
 }
 
-.menu-button.clickeado div:last-child{
+.menu-button.clickeado div:last-child {
   background-color: #f8f8f8;
   transform: rotate(-45deg);
   width: 100%;
-
 }
-
 
 /* titulos principales */
 
@@ -311,20 +343,29 @@ img{
 }
 
 .row {
+  position: relative;
   width: 100%;
+  z-index: 990;
+}
+
+.row:hover{
+  mix-blend-mode: difference;
+  color: #fff;
 }
 
 .row h1 {
   font-size: 8.75rem;
-  font-family: "MADE SAONARA 2", sans-serif;
+  font-family: "Made-Saonara-2", sans-serif;
   letter-spacing: 10px;
   font-weight: 500;
   margin-left: 15px;
-  color: #000;
 }
 
 .row .color {
   color: #c8aa8c;
+}
+.row:hover .color{
+  color:  #375573;
 }
 
 .row span {
@@ -334,13 +375,19 @@ img{
 /* responsive header y titulos */
 
 @media only screen and (max-width: 992px) {
+  #home {
+    height: auto;
+    animation: none;
+    padding-bottom: 14vh;
+  }
+
   .row h1 {
     font-size: 7.75rem;
+    text-wrap: pretty;
   }
 }
 
-
-@media only screen and (max-width: 796px){
+@media only screen and (max-width: 796px) {
   .row h1 {
     font-size: 7rem;
   }
@@ -349,6 +396,8 @@ img{
 @media only screen and (max-width: 768px) {
   #home {
     height: auto;
+    animation: none;
+    padding-bottom: 24vh;
   }
 
   .header {
@@ -365,18 +414,18 @@ img{
     background-color: transparent;
   }
 
-  .active{
+  .active {
     background-color: transparent;
   }
-  .active2{
+  .active2 {
     background-color: transparent;
   }
 
-  .menu-button{
+  .menu-button {
     display: flex;
   }
 
-  #navbar{
+  #navbar {
     display: none;
     position: absolute;
     top: 0;
@@ -385,27 +434,26 @@ img{
     height: 100vh;
     background-color: #212022;
   }
-  
 
-  .header nav ul{
+  .header nav ul {
     height: 100%;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
   }
 
-  .header li{
-    font-family: "MADE SAONARA 2", sans-serif;
+  .header li {
+    font-family: "Made-Saonara-2", sans-serif;
     font-size: 4.7rem;
     letter-spacing: 10px;
     font-weight: 300;
   }
 
-  .header li a{
+  .header li a {
     color: #f8f8f8;
   }
 
-/*titulos responsive aqui */
+  /*titulos responsive aqui */
 
   .row-container {
     height: 80vh;
@@ -417,17 +465,18 @@ img{
     font-size: 5rem;
     letter-spacing: 5px;
   }
+
+
 }
-
-
 
 /* pues el footer xd */
 
-.footer {
+#footer {
   flex-shrink: 0;
   width: 100%;
+  background-color: #212022;
+  color: #f8f8f8;
 }
-
 
 .footer-copy {
   display: flex;
@@ -440,13 +489,12 @@ img{
   justify-content: center;
   font-size: 0.9rem;
   padding-top: 20px;
-  border-top: 3px solid black;
-  background-color: #212022;
+  border-top: 3px solid #000;
+  background-color: #000;
   color: #c8aa8c;
 }
 
 @media only screen and (max-width: 768px) {
-
   .footer-copy {
     height: auto;
     padding-top: 10px;
@@ -458,24 +506,40 @@ img{
 
 #main {
   overflow: hidden;
-  padding: 0 24px;
+  background: linear-gradient(to bottom, #f8f8f8 70%, #212022 30%);
+  padding-bottom: 10vh;
 }
 
-@media only screen and (max-width: 876px){
-  #main{
-    padding: 0 10px;
-  }
+
+#main > section {
+  background-color: #e9e9e9;
+}
+
+.divisor-top {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(180deg);
+  z-index: 2;
 }
 
 #aboutme {
+  position: relative;
   width: 100%;
   height: 60vh;
   min-height: 60vh;
-  margin-top: 20vh;
+  padding-top: 4vh;
+  background: linear-gradient(to bottom, #f8f8f8 50%, #e9e9e9 50%);
+}
+
+#aboutme > div {
+  position: relative;
+  z-index: 99;
 }
 
 .decoration-section {
-  z-index: 0;
+  position: relative;
+  padding-left: 20px;
 }
 
 .section-text {
@@ -485,18 +549,17 @@ img{
   color: white;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  font-family: "MADE SAONARA 2", sans-serif;
+  font-family: "Made-Saonara-2", sans-serif;
   font-size: 1rem;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   font-weight: 400;
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
 }
 
-.profilepic{
+.profilepic {
   display: flex;
   justify-content: flex-end;
   width: 100%;
- 
 }
 
 .profilepic img {
@@ -517,12 +580,12 @@ img{
   padding-left: 20px;
   margin-left: 40px;
   gap: 10px;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .detailed-information-row h2 {
   font-size: 1.75rem;
   margin-bottom: 10px;
+  text-wrap: balance;
 }
 
 .detailed-information-row span {
@@ -535,24 +598,25 @@ img{
   line-height: 28px;
   font-weight: 300;
   width: 100%;
+  text-wrap: balance;
 }
 
 .button-info {
   margin-top: 30px;
 }
 
-.button-info button{
+.button-info button {
   all: unset;
 }
 
-.button-info{
+.button-info {
   display: inline-block;
   background-color: #212022;
   padding: 6px 10px;
   color: #fff;
   border-radius: 10px;
   box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.8);
-  font-family: "MADE SAONARA 2", sans-serif;
+  font-family: "Made-Saonara-2", sans-serif;
   font-size: 1rem;
   letter-spacing: 1.5px;
   font-weight: 400;
@@ -569,14 +633,15 @@ img{
 @media only screen and (max-width: 876px) {
   #aboutme {
     height: auto;
-    margin-bottom: 120px;
+    padding: 0 15px;
+    padding-bottom: 120px;
   }
 
   .detailed-information {
     grid-template-columns: 100%;
   }
 
-  .profilepic{
+  .profilepic {
     margin: 14px 0;
     display: block;
   }
@@ -592,9 +657,8 @@ img{
     padding-left: 0;
   }
 
-
   .detailed-information-row h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .button-info {
@@ -607,295 +671,92 @@ img{
 }
 
 
-/* seccion soft y hard skills  */
+/* section services */
 
-#skills{
-	margin-bottom: 40vh;
-}
-
-.decoration-section {
-	width: 100%;
-}
-
-.slider-container{
-  position: relative;
+#services {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 50vh;
-  padding-bottom: 20vh;
+  gap: 10vh;
+  min-height: 100vh;
 }
 
-.slider-skills{
-  position: absolute;
-  left: -2%;
-  background-color: #212022;
-  color: #fff;
-  padding: 30px 0;
-  font-family: "MADE SAONARA 2", sans-serif;
-  letter-spacing: 8px;
-  font-weight: 600;
-  font-size: 2.6rem;
-  text-transform: uppercase;
-  overflow: hidden;
-}
-
-.slider-skills::before,
-.slider-skills::after{
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 100px;
-  height: 100%;
-  z-index: 2;
-}
-
-.slider-skills::before{
-  left: 0;
-  background: linear-gradient(to left, transparent, #212022);
-}
-
-.slider-skills::after{
-  right: 0;
-  background: linear-gradient(to right, transparent, #212022);
-}
-
-.slider-skills:hover .slider-inner{
-  animation-play-state: paused;
-}
-
-.slider-inner {
+.services-cotainer{
   display: flex;
-  position: relative;
-  width: 100%;
-  animation: 28s slide infinite linear;
+  padding: 0 10vh;
 }
 
-
-
-.slider-part{
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  padding: 0 10px;
+.services-info{
+  width: 40%;
 }
 
-.slider-first{
-  padding-left: 60px;
+.services-info h1{
+  font-size: 6rem;
+  font-family: "Made-Saonara-2", sans-serif;
+  letter-spacing: 10px;
+  font-weight: 500;
 }
 
-.icon-skill{
-  display: flex;
-  align-items: center;
-  width: 70px;
-  height: 70px;
-  margin-right: 1rem;
+.services-info span{
+  padding-left: 6px;
 }
 
-.icon-skill img{
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes slide {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-100%);
-  }
-}
-
-
-
-
-
-
-.container-skills {
-	width: 100%;
-	height: 100%;
-	position: relative;
-  overflow: hidden;
-}
-
-.container-skills .wrap-items {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  padding-top: 4vw; 
-  padding-bottom: 2vw; 
-}
-
-.container-skills .item {
-  position: relative;
-  background-color: transparent;
-  padding-left: 4vw;
-  height: 20vw; 
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  user-select: none;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  transition: 0.5s ease-in;
-}
-
-.container-skills .item:hover{
-  background-color: #212022;
-  color: #fff;
-}
-
-.container-skills .opacity0{
-  opacity: 0;
-}
-
-.container-skills .item h2 {
-  font-family: "MADE SAONARA 2", sans-serif;
-  letter-spacing: 5px; 
-  width: 100%;
-}
-
-.container-skills .item:before {
-  font-family: "MADE SAONARA 2", sans-serif;
-  position: absolute;
-  font-size: 6.5rem;
-  opacity: 0.4;
-  font-weight: bold;
-  -webkit-transform: translate(-2vw, -3vw); 
-  transform: translate(-2vw, -3vw); 
-  line-height: 1;
-  color: #89a5b3;
-}
-
-.container-skills .item:hover:before{
+.services-info .color{
   color: #c8aa8c;
 }
 
-.container-skills .wrap-items{
-    counter-reset: item;
-    float: left;
+.services-info p{
+  font-size: 1.4rem;
+  text-wrap: balance;
+  padding-left: 6px;
 }
 
-
-.container-skills .wrap-items .item:before {
-    counter-increment: item;
-    content: counter(item);
-}
-.container-skills .wrap-items .opacity0:before {
-  display: none;
-}
-
-@media screen and (max-width: 767px) {
-
-
-  .slider-skills::before,
-  .slider-skills::after {
-   display: none;
-  }
-
-  .slider-first{
-    padding-left: 80px;
-  }
-
-
-
-
-  .container-skills .wrap-items {
-    display: block;
-    float: none; 
-    padding-top: 2vw; 
-    padding-bottom: 1vw;
-  }
-
-  .container-skills .item {
-    height: 168px; 
-    margin-bottom: 1rem;
-  }
-
-  .container-skills .opacity0{
-    display: none;
-  }
-
-  .container-skills .item h2 {
-    font-size: 1.2rem;
-    padding-left: 14vw;
-  }
-
-  .container-skills .item::before{
-    font-size: 5rem;
-  }
-
-}
-
-
-
-/* seccion works */
-
-#works {
-  width: 100%;
-  height: 120vh;
-  min-height: 120vh;
-  font-family: "MADE SAONARA 2", sans-serif;
-  margin-bottom: 50vh;
-}
-
-#works .decoration-section {
-  display: inline-block;
-}
-
-#works a,
-#works a:visited #works a:hover {
-  text-decoration: none;
-}
-
-#works li {
-  list-style: none;
-  cursor: pointer;
-}
-
-#works nav {
+#services nav {
+  flex: 1;
   min-height: 100vh;
   display: flex;
   justify-content: center;
 }
 
-#works nav ul {
+#services nav ul {
   width: 90%;
 }
 
-#works nav ul li {
-  border-bottom: 0.05rem solid #f8f8f8;
-  position: relative;
-  z-index: 10;
-}
-
-#works nav ul li .project {
+#services nav ul li{
+  list-style: none;
   display: flex;
-  padding: 64px 40px 32px 40px;
+  padding: 32px 40px 32px 40px;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 10;
+  border-bottom: 0.05rem solid #000;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
 }
 
-.project h2,
-.project span {
+#services nav ul li:first-child{
+  padding: 40px 40px 32px 40px;
+}
+
+.hability{
+  font-family: "Made-Saonara-2", sans-serif;
+}
+
+.hability h2,
+.hability span {
   transition: transform 0.5s ease-in-out;
 }
 
-.project:hover h2 {
+.hability:hover h2 {
   transform: translateX(-4%);
 }
 
-.project:hover span {
+.hability:hover span {
   transform: translateX(6%);
 }
 
-.project h2 {
+.hability h2 {
   display: block;
   font-weight: 500;
   letter-spacing: 10px;
@@ -903,11 +764,11 @@ img{
   mix-blend-mode: difference;
   display: inline-block;
   position: relative;
-  font-size: 4rem;
+  font-size: 3rem;
   text-transform: uppercase;
 }
 
-.project span {
+.hability span {
   display: block;
   font-weight: 500;
   letter-spacing: 10px;
@@ -917,9 +778,10 @@ img{
   text-transform: uppercase;
 }
 
+/*
 .reveal-img {
   position: absolute;
-  width: 500px; 
+  width: 500px;
   height: auto;
   top: 50%;
   left: 50%;
@@ -939,152 +801,364 @@ img{
   transition: text-transform 0.5s ease-out;
 }
 
-/* Media query para dispositivos con un ancho máximo de 768px  */
+*/
+
 @media only screen and (max-width: 768px) {
-  #works {
+  #services {
     height: auto;
-    margin-bottom: 100px;
+    padding: 0 15px 15px 15px;
   }
 
-  #works nav ul li .project {
-    padding: 40px 20px 20px 20px;
+  .services-cotainer{
+    flex-direction: column;
+    padding: 0;
   }
 
-  .project h2 {
+  .services-cotainer h1{
+    font-size: 4rem;
+  }
+
+  .services-cotainer p{
+    font-size: 1.2rem;
+  }
+
+  .services-info{
+    width: 100%;
+  }
+
+  #services nav ul li {
+    padding: 40px 10px 20px 10px;
+  }
+
+  #services nav ul li:first-child {
+    padding: 40px 10px 20px 10px;
+  }
+
+  .hability h2 {
     font-size: 2.5rem;
     letter-spacing: 5px;
   }
 
- 
-  .reveal-img {
+ /* .reveal-img {
     width: 200px;
     height: 300px;
   }
 
   .reveal-img img {
     transform: scale(0.7);
+  } */
+}
+
+/* seccion works */
+
+#works {
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 10vh;
+}
+
+
+.works-container{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 10vh;
+}
+
+.works-title{
+  padding-bottom: 80px;
+}
+
+.works-title h1{
+  font-size: 6rem;
+  font-family: "Made-Saonara-2", sans-serif;
+  letter-spacing: 10px;
+  font-weight: 500;
+}
+
+.works-title span{
+  padding-left: 6px;
+}
+
+.works-title .color{
+  color: #c8aa8c;
+}
+
+.project-container {
+  height: 240vh;
+  display: grid;
+  grid-template-columns: repeat(12,minmax(0,1fr));
+  gap: 5rem;
+}
+
+.project:nth-child(1) {
+  grid-column: span 7/span 7
+}
+
+.project:nth-child(2) {
+  grid-column: span 5/span 5;
+  padding-top: 5rem 
+}
+
+.project:nth-child(3) {
+  grid-column: span 5/span 5;
+  padding-top: 5rem 
+}
+
+.project:nth-child(4) {
+  grid-column: span 7/span 7
+}
+
+.project a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 20px;
+  width: 100%;
+  margin-bottom: 40px;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #ffd3b6, #ffc4df, #b5e0ff, #b5f2df);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  cursor: pointer;
+}
+
+.project:nth-child(1) a{
+  height: 90%;
+}
+
+.project:nth-child(2) a{
+ height: 70%;
+}
+
+.project:nth-child(3) a{
+  height: 70%;
+}
+
+.project:nth-child(4) a{
+  height: 80%;
+}
+
+.img-project{
+  width: 90%;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+}
+
+.img-project img{
+  border-radius: 8px;
+}
+
+.project a:hover .img-project{
+  transform: scale(1.04);
+}
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+.project-info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-info h2{
+  font-family: "Made-Saonara-2", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  font-weight: 600;
+}
+
+.technologies{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.technologies span{
+  border: 1px solid #000;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+  padding: 6px 12px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  #works{
+    padding: 0 15px 240px 15px;
   }
+
+  .works-title h1{
+    font-size: 4rem;
+  }
+
+  .works-container{
+    padding: 0;
+  }
+
+  .project-container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+
+  .project {
+    grid-column: span 1 / span 1 !important;
+    padding-top: 5rem !important;
+  }
+
+  .project a{
+    height: 90% !important;
+  }
+
+  .project-info h2{
+    font-size: 1.8rem;
+  }
+
+  .technologies span{
+    font-size: 0.7rem;
+  }
+
+
 }
 
 
 
+
+
+/* section contact */
 
 #contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   min-height: 100vh;
-  margin-bottom: 20vh;
+  padding-bottom: 10vh;
 }
 
-.contact-container{
+.contact-container {
   display: flex;
   width: 100%;
   padding: 0 80px;
-  margin-top: 100px;
   position: relative;
 }
 
-.contact-form{
+.contact-form {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 5rem;
 }
 
-.contact-title{
+.contact-title {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.contact-title h2{
+.contact-title h2 {
   font-size: 6rem;
-  font-family: "MADE SAONARA 2", sans-serif;
+  font-family: "Made-Saonara-2", sans-serif;
   letter-spacing: 10px;
   font-weight: 500;
-  color: #000;
 }
 
-.contact-title span{
+.contact-title .color {
   color: #c8aa8c;
 }
 
-.contact-title p{
+.contact-title p {
   font-size: 1.2rem;
-  font-family: 'Times New Roman', Times, serif;
 }
 
-.contact-form form{
+.contact-form form {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.contact-form form .form-row{
+.contact-form form .form-row {
   display: flex;
 }
 
-
-.contact-form form .input-data{
+.contact-form form .input-data {
   width: 100%;
   height: 40px;
   margin: 0 20px;
   position: relative;
 }
 
-.contact-form form .textarea{
+.contact-form form .textarea {
   height: 88px;
-
 }
 
 .input-data input,
-.textarea textarea{
+.textarea textarea {
   display: block;
   width: 100%;
   height: 100%;
   border: none;
   font-size: 1.4rem;
   font-weight: 400;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: #f8f8f8;
   background-color: transparent;
   outline: none;
 }
 
-
-
-.textarea textarea{
+.textarea textarea {
   resize: none;
   padding-top: 20px;
 }
-
 
 .input-data input:focus ~ label,
 .textarea textarea:focus ~ label,
 .input-data input:not(:placeholder-shown) ~ label,
 .textarea textarea:not(:placeholder-shown) ~ label {
-  transform: translateY(-22px);
-  color: #6c8fa1;
+  transform: translateY(-28px);
+  color: #c8aa8c;
   font-size: 0.9rem;
 }
 
-.input-data label{
+.input-data label {
   position: absolute;
   bottom: 10px;
   font-size: 1.2rem;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   pointer-events: none;
   transition: all 0.4s ease;
 }
 
-.textarea label{
+.textarea label {
   width: 100%;
   border: 30px;
   bottom: 45px;
   background-color: transparent;
 }
 
-.input-data .underline{
+.input-data .underline {
   position: absolute;
   bottom: 0;
   height: 2px;
@@ -1092,24 +1166,27 @@ img{
 }
 
 .input-data .underline::before,
-.input-data .underline::after{
+.input-data .underline::after {
   position: absolute;
-  content: '';
+  content: "";
   height: 100%;
   width: 100%;
-  background-color: #89a5b3;
+  background-color: #c8aa8c;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.4s ease;
 }
 
-.input-data input:focus ~ .underline::before, .underline::after,
-.textarea textarea:focus ~ .underline::before, .underline::after,
-.input-data input:not(:placeholder-shown) ~ .underline::before, .underline::after,
-.textarea textarea:valid ~ .underline::before, .underline::after{
- transform: scaleX(1);
+.input-data input:focus ~ .underline::before,
+.underline::after,
+.textarea textarea:focus ~ .underline::before,
+.underline::after,
+.input-data input:not(:placeholder-shown) ~ .underline::before,
+.underline::after,
+.textarea textarea:valid ~ .underline::before,
+.underline::after {
+  transform: scaleX(1);
 }
-
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -1118,33 +1195,33 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s; /* Asegúrate de que la transición sea muy larga para evitar cambios bruscos */
 }
 
-.contact-btn{
-  height: 45px!important;
-  width: 125px!important;
+.contact-btn {
+  height: 45px !important;
+  width: 125px !important;
 }
 
-.contact-btn input{
+.contact-btn input {
   background-color: unset;
   border: unset;
-  color: #fff;
-  font-family: "MADE SAONARA 2", sans-serif;
+  color: #212022;
+  font-family: "Made-Saonara-2", sans-serif;
   font-size: 1rem;
   letter-spacing: 1.5px;
   font-weight: 400;
   text-decoration: none;
 }
 
-.contact-btn{
+.contact-btn {
   display: inline-block;
-  background-color: #212022;
+  background-color: #fff;
   padding: 6px 10px;
-  color: #fff;
+  color: #212022;
   border-radius: 10px;
   box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.8);
   transition: 0.7s ease-in-out;
 }
 
-.contact-btn:hover{
+.contact-btn:hover {
   background-color: #c8aa8c;
   animation: radiusAnimation 0.7s ease-in-out both;
 }
@@ -1156,7 +1233,7 @@ input:-webkit-autofill:active {
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  70%{
+  70% {
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
@@ -1170,7 +1247,7 @@ input:-webkit-autofill:active {
   }
 }
 
-.socials{
+.socials {
   width: 40%;
   padding-left: 80px;
   display: flex;
@@ -1178,26 +1255,29 @@ input:-webkit-autofill:active {
   justify-content: space-around;
 }
 
-.social-row{
+.social-row {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.social-row h2{
+.social-row h2 {
+  font-family: "Made-Saonara-2", sans-serif;
   font-size: 2rem;
-  font-family: "MADE SAONARA 2", sans-serif;
   letter-spacing: 4px;
   font-weight: 600;
-  color: #000;
+  color: #f8f8f8;
 }
 
-.social-row ul{
+.social-row span{
+  padding-left: 6px;
+}
+
+.social-row ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 
 .social-row li {
   text-transform: capitalize;
@@ -1206,14 +1286,18 @@ input:-webkit-autofill:active {
 }
 
 .social-row a,
-.social-row p{
+.social-row p {
   font-size: 1.2rem;
   text-decoration: none;
-  color: #000;
+  color: #f8f8f8;
+}
+
+.social-row p{
+  padding-left: 9px;
 }
 
 .social-row li:hover,
-.social-row span:hover{
+.social-row span:hover {
   cursor: pointer;
 }
 
@@ -1221,49 +1305,48 @@ input:-webkit-autofill:active {
   color: #c8aa8c;
 }
 
-@media screen and (max-width: 768px){
-
-  #contact{
+@media screen and (max-width: 768px) {
+  #contact {
     height: auto;
+    padding-left: 5vh;
+    padding-right: 5vh;
   }
 
-  .contact-container{
+  .contact-container {
     flex-direction: column;
     gap: 4.5rem;
     padding: 0 10px;
   }
 
-  .contact-form{
+  .contact-form {
     gap: 2rem;
   }
 
-  .contact-title h2{
+  .contact-title h2 {
     font-size: 4rem;
   }
 
-  .contact-form form .form-row{
+  .contact-form form .form-row {
     display: block;
   }
 
-  .contact-form form .input-data{
+  .contact-form form .input-data {
     width: auto;
   }
-  .contact-form form .input-media{
+  .contact-form form .input-media {
     margin-bottom: 32px;
   }
 
-  .socials{
+  .socials {
     width: auto;
     padding: 0;
     gap: 32px;
   }
+
+  .decoration-section{
+    padding: 0;
+  }
 }
-
-
-
-
-
-
 
 /* Media query horizontal */
 
@@ -1283,7 +1366,7 @@ input:-webkit-autofill:active {
     min-height: 180vh;
   }
 
-  #works {
+  #services {
     height: auto;
     min-height: 180vh;
   }
@@ -1292,7 +1375,16 @@ input:-webkit-autofill:active {
     min-height: 180vh;
   }
 
-  .slider-container{
+  .slider-container {
     height: 70vh;
   }
 }
+
+/* scroll */
+
+@keyframes enhance-hero{
+  to{
+    height: 70vh;
+  }
+}
+

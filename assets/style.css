@@ -371,6 +371,36 @@ img {
 
 /* responsive header y titulos */
 
+@media only screen and (max-width: 1458px) {
+  .row h1{
+    font-size: 8rem;
+  }
+}
+
+@media only screen and (max-width: 1358px) {
+  .row h1{
+    font-size: 7.5rem;
+  }
+}
+
+@media only screen and (max-width: 1278px) {
+  .row h1{
+    font-size: 6.75em;
+  }
+}
+
+@media only screen and (max-width: 1188px){
+  #home {
+    height: auto;
+    animation: none;
+    padding-bottom: 14vh;
+  }
+  .row h1{
+    font-size: 8rem;
+  }
+}
+
+
 @media only screen and (max-width: 992px) {
   #home {
     height: auto;
@@ -386,7 +416,7 @@ img {
 
 @media only screen and (max-width: 796px) {
   .row h1 {
-    font-size: 7rem;
+    font-size: 6.5rem;
   }
 }
 

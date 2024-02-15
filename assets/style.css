@@ -56,6 +56,10 @@ img {
   width: 100%;
 }
 
+a{
+  cursor: pointer;
+}
+
 /* inicio y preloader */
 
 .inicio {
@@ -118,9 +122,16 @@ img {
 #home {
   width: 100%;
   height: 100vh;
+  min-height: 680px;
   animation: enhance-hero linear both;
   animation-timeline: scroll(root);
   animation-range: 0 360px;
+}
+
+@keyframes enhance-hero {
+  to {
+    height: 70vh;
+  }
 }
 
 .header {
@@ -135,12 +146,7 @@ img {
   top: 0;
   z-index: 992;
   transform: translateY(0);
-  transition: transform 0.1s ease-out;
   transition: height, 0.6s ease-out;
-}
-
-.header-hidden {
-  transform: translateY(-100%);
 }
 
 .active {
@@ -424,7 +430,7 @@ img {
   #home {
     height: auto;
     animation: none;
-    padding-bottom: 24vh;
+    padding-bottom: 0vh;
   }
 
   .header {
@@ -491,6 +497,19 @@ img {
   .row h1 {
     font-size: 5rem;
     letter-spacing: 5px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #home{
+    padding-bottom: 10vh;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  #home{
+    min-height: 820px;
+    padding-bottom: 24vh;
   }
 }
 
@@ -830,6 +849,11 @@ img {
   #services {
     height: auto;
     padding: 0 15px 15px 15px;
+    padding-bottom: 20vh;
+  }
+
+  #services nav{
+    min-height: auto;
   }
 
   .services-cotainer {
@@ -911,10 +935,12 @@ img {
 }
 
 .project-container {
-  height: 240vh;
+  height: 100%;
+  min-height: 240vh;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 5rem;
+  overflow: visible;
 }
 
 .project:nth-child(1) {
@@ -1022,7 +1048,14 @@ img {
   padding: 6px 12px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1128px){
+  .project-info{
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media only screen and (max-width: 954px) {
   #works {
     padding: 0 15px 240px 15px;
   }
@@ -1050,8 +1083,7 @@ img {
   }
 
   .project-info{
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
   }
 
   .project-info h2 {
@@ -1060,6 +1092,13 @@ img {
 
   .technologies span {
     font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 442px){
+  .project-info{
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
@@ -1371,17 +1410,12 @@ input:-webkit-autofill:active {
 /* Media query horizontal */
 
 @media only screen and (max-height: 450px) {
-  #home {
-    height: auto;
-    min-height: 100vh;
-  }
 
-  .row h1 {
-    font-size: 4.75rem;
-    letter-spacing: 5px;
+  #home{
+    animation: none;
   }
-
-  #aboutme {
+ 
+   #aboutme {
     height: auto;
     min-height: 180vh;
   }
@@ -1392,18 +1426,7 @@ input:-webkit-autofill:active {
   }
   #works {
     height: auto;
-    min-height: 180vh;
+    min-height: auto;
   }
-
-  .slider-container {
-    height: 70vh;
-  }
-}
-
-/* scroll */
-
-@keyframes enhance-hero {
-  to {
-    height: 70vh;
-  }
+  
 }

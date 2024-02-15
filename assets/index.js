@@ -37,22 +37,6 @@ document.getElementById("formSent").addEventListener("submit", function (event) 
     );
   });
 
-document.getElementById("downloadButton").addEventListener("click", downloadResume);
-function downloadResume() {
-  var resumePath = "CV/MedinaCV.pdf";
-
-  var link = document.createElement("a");
-
-  link.href = resumePath;
-
-  link.download = "MedinaCV.pdf";
-
-  document.body.appendChild(link);
-  link.click();
-
-  document.body.removeChild(link);
-}
-
 function toggleHeaderClass() {
   var header = document.getElementById("header");
   var footer = document.getElementById("footer");
@@ -152,6 +136,14 @@ function prealoaderAnimation() {
     },
   });
 
+  tl.set("#loader", {
+    height: "100%",
+  })
+
+  .set("header", {
+    y: "-100%",
+  })
+
   tl.from("#loader .child span", {
     x: "20%",
     delay: 1,
@@ -193,15 +185,20 @@ function prealoaderAnimation() {
 
 function homePageAnimation() {
   var tl = gsap.timeline();
-
-  tl.call(function () {
-    document.getElementById("header").classList.remove("header-hidden");
-  }).to("#home .parent .child", {
+    
+  tl.to("#home .parent .child", {
     y: 0,
     stagger: 0.2,
     duration: 1.8,
     ease: Expo.easeInOut,
   });
+
+  tl.to("header", {
+    y: 0,
+    delay: -0.8,
+    duration: 0.2,
+    ease: Expo.easeInOut,
+  })
 }
 
 function textRevealServices() {
